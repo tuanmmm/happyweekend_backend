@@ -1,6 +1,7 @@
 import Room from "../models/room"
-// import Basic from "../models/basic"
 import slugify from "slugify"
+import imagesroom from "../models/imagesroom"
+import dateBooked from "../models/dateBooked"
 
 export const creat = async (req, res) => {
     req.body.slug = slugify(req.body.name)
@@ -15,8 +16,9 @@ export const getAll = async (req, res) => {
     try {
         const room = await Room.find().exec()
         res.json(room)
-    } catch (error) {
 
+    } catch (error) {
+        console.log(error);
     }
 }
 
@@ -40,9 +42,9 @@ export const remove = async (req, res) => {
 }
 
 export const update = async (req, res) => {
-    req.body.slug = slugify(req.body.name)
     try {
         const newRoom = await Room.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true }).exec()
+        console.log(newRoom);
         res.json(newRoom)
     } catch (error) {
 
@@ -50,11 +52,12 @@ export const update = async (req, res) => {
 }
 
 export const search = async (req, res) => {
-    console.log(req.query);
+    const checkIn = req.query.dateFrom;
+    const checkOut = req.query.dateTo;
     try {
-        const rooms = await Room.find({
-            // name: name_search,
-            status: {$gt : 0}
+        const rooms = await dateBooked.find({
+            dateFrom: { $eq: checkIn },
+            dateTo: { $eq: checkOut }
         }).exec()
         res.json(rooms)
     } catch (error) {

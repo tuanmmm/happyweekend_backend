@@ -40,3 +40,21 @@ const PORT = 4000;
 app.listen(PORT, () => {
   console.log(`Server running port ${PORT}`);
 });
+
+
+
+
+
+// const URL = 'mongodb+srv://admin:sang2002@happyweekend.e5gnq2j.mongodb.net/?retryWrites=true&w=majority'
+
+// mongoose
+//   .connect(URL)
+//   .then(() => console.log("DB Connected successfully"))
+//   .catch((error) => console.log("DB not connected ", error));
+
+//   readdirSync("./src/router").forEach((route) => {
+//     // console.log(route);
+//     app.use("/api", require(`./router/${route}`));
+//   });
+
+//   app.listen(4000, () => console.log("server is listening port: ", 4000));

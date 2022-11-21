@@ -5,34 +5,39 @@ import mongoose,{Schema, ObjectId} from "mongoose";
 const RomSchema = Schema({
     name:{
         type:String,
-        required:true,
+        // required:true,
         minLength: 5
     },
     slug:{
         type:String,
-        required:true,
+        // required:true,
         lowercase:true,
         unique:true,
         index:true
     },
     image:{
-        type:String,
+        type: [],
     },
     price: {
         type: Number,
-        required: true,
+        // required: true,
     },
     description:{
         type: String,
-        required: true,
+        // required: true,
         minLength:5
     },
-    status: {
-        type: Number
+    coc: {
+        type: Boolean,
+        default: false
     },
     category:{
         type: ObjectId,
         ref:"Category"
+    },
+    date: {
+        type: ObjectId,
+        ref: "dateBooked"
     }
 }, {timestamps: true})
 

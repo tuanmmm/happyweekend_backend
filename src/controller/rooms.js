@@ -13,6 +13,7 @@ export const creat = async (req, res) => {
     }
 }
 export const getAll = async (req, res) => {
+    
     try {
         const room = await Room.find().exec()
         res.json(room)

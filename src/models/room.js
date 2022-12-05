@@ -18,18 +18,15 @@ const RomSchema = Schema({
     image:{
         type: [],
     },
-    price: {
-        type: Number,
-        // required: true,
-    },
+    price: [{
+        brand:Number,
+        title:String,
+        value:Number
+    }],
     description:{
         type: String,
         // required: true,
         minLength:5
-    },
-    coc: {
-        type: Boolean,
-        default: false
     },
     category:{
         type: ObjectId,
